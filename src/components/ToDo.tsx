@@ -1,22 +1,31 @@
-// import React from 'react'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
-import { faTrash } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 
-const ToDo = ({task}) => {
-  return (
-    <div className='Todo'>
-      <p className="">
-        {task.task}
-      </p>
-      <div className="
-      "
-      >
-        <FontAwesomeIcon icon={faPenToSquare} />
-        <FontAwesomeIcon icon={faTrash} />
-      </div>
-    </div>
-  )
+interface Task {
+  id: string;
+  task: string;
+  completed: boolean;
 }
 
-export default ToDo
+interface ToDoProps {
+  task: Task;
+  toggleComplete: (id: string) => void;
+  deleteToDo: (id: string) => void;
+  editToDo: (id: string) => void; // Add editToDo prop to handle edit button click
+}
+
+const ToDo: React.FC<ToDoProps> = ({ task, toggleComplete, deleteToDo, editToDo }) => {
+  return (
+    <div className='Todo'>
+      <p onClick={() => toggleComplete(task.id)} className={`${task.completed ? 'completed': ""}`}>
+        {task.task}
+      </p>
+      <div>
+        <FontAwesomeIcon icon={faPenToSquare} onClick={() => editToDo(task.id)} />
+        <FontAwesomeIcon icon={faTrash} onClick={() => deleteToDo(task.id)} />
+      </div>
+    </div>
+  );
+};
+
+export default ToDo;

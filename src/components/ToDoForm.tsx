@@ -3,6 +3,7 @@ import { useState } from "react";
 
 interface ToDoFormProps {
   addTodo: (todo: string) => void;
+  editToDo: (id: string) => void;
 }
 
 const ToDoForm: React.FC<ToDoFormProps> = ({ addTodo }) => {
