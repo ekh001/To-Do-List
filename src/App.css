@@ -24,6 +24,10 @@ h1 {
   font-size: 1.75rem;
 }
 
+h3 {
+  color:#c5aeff
+}
+
 .TodoWrapper {
   background: #07074d;
   margin-top: 5rem;

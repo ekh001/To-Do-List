@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import ToDoForm from "./ToDoForm";
 import { v4 as uuidv4 } from 'uuid';
@@ -35,23 +35,26 @@ const ToDoWrapper = () => {
   };
 
   const editToDo = (id: TodoId) => {
-    setEditingTaskId(id); // Set the 'id' of the task being edited
+    setEditingTaskId(id); 
   };
 
   const editTask = (id: string, newTask: string) => {
     setTodos(todos => todos.map(todo => todo.id === id ? { ...todo, task: newTask } : todo));
-    setEditingTaskId(null); // Reset the editing task ID after submitting the form
+    setEditingTaskId(null); 
   };
 
   const cancelEdit = () => {
-    setEditingTaskId(null); // Reset the editing task ID when canceling the form
+    setEditingTaskId(null); 
   };
 
   return (
     <div className="TodoWrapper">
       <h1>
-        Let's Get it Done!
+        TaskMinder:
       </h1>
+      <h3>
+        What's on the agenda today?
+      </h3>
       <ToDoForm addTodo={addTodo} editToDo={editToDo} />
       {todos.map((todo) => (
         editingTaskId === todo.id ? (
