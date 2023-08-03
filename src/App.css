@@ -7,8 +7,15 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
-  background: #1e00c7;
+  background-image: url('../src/assets/gradientblue.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,29 +36,32 @@ h3 {
 }
 
 .TodoWrapper {
-  background: #07074d;
-  margin-top: 5rem;
+  background: #090962;
   padding: 2rem;
   border-radius: 5px;
+  border-color: #2467ca;
+  box-shadow: 0 0 10px rgb(5, 5, 5);
 }
 
 .TodoForm {
   width: 100%;
+  
 }
 
 .todo-input {
   outline: none;
-  background: none;
+  background: #150f79;
   border: 1px solid #5866ff;
   padding: 0.5rem 1rem;
   margin-top: 1rem;
   margin-bottom: 2rem;
   width: 300px;
   color: #fff;
+  box-shadow: 0 0 5px rgb(5, 5, 5);
 }
 
 .todo-input::placeholder {
-  color: #ffffff4d;
+  color: #fafafa98;
 }
 
 .todo-btn {
@@ -60,7 +70,15 @@ h3 {
   border: none;
   padding: 0.55rem;
   cursor: pointer;
-  
+  box-shadow: 0 0 5px rgb(5, 5, 5);
+}
+.todo-btn:hover {
+  background: #283cd2;
+  color: #fff;
+  border: none;
+  padding: 0.55rem;
+  cursor: pointer;
+  transition: background-color .3s ease;
 }
 
 .Todo {
@@ -77,6 +95,25 @@ h3 {
 
 .fa-trash {
   margin-left: 0.75rem;
+  padding: 2px;
+}
+
+.fa-trash:hover {
+  opacity: .7;
+  transform: scale(1.1);
+  transition: transform .3s ease;
+  transition: opacity .3s ease;
+}
+
+.fa-pen-to-square {
+  margin-left: 0.75rem;
+  padding: 2px;
+}
+.fa-pen-to-square:hover {
+  opacity: .7;
+  transform: scale(1.1);
+  transition: transform .3s ease;
+  transition: opacity .3s ease;
 }
 
 .completed {

@@ -24,7 +24,7 @@ const ToDoForm: React.FC<ToDoFormProps> = ({ addTodo }) => {
       >
         <input type="text" className="todo-input"
         value={value}
-        placeholder='What is the task today?'
+        placeholder='Enter task here'
         onChange={(e) => setValue(e.target.value)} />
         <button type="submit" className="todo-btn"
         >

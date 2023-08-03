@@ -11,7 +11,7 @@ interface ToDoProps {
   task: Task;
   toggleComplete: (id: string) => void;
   deleteToDo: (id: string) => void;
-  editToDo: (id: string) => void; // Add editToDo prop to handle edit button click
+  editToDo: (id: string) => void; 
 }
 
 const ToDo: React.FC<ToDoProps> = ({ task, toggleComplete, deleteToDo, editToDo }) => {
