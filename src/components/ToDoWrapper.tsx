@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import ToDoForm from "./ToDoForm";
 import { v4 as uuidv4 } from 'uuid';
@@ -29,6 +31,13 @@ const ToDoWrapper = () => {
   const [editingTaskId, setEditingTaskId] = useState<string | null>(null);
 
   const addTodo = (todo: string) => {
+    if (todo.trim() === "") {
+      toast("This field can't be empty, so unless your task is truly to do nothing, I'd suggest trying again.", {
+        position: toast.POSITION.TOP_CENTER,
+        className: 'toast-message'
+      });
+      return;
+    }
     setTodos([...todos, {
       id: uuidv4(),
       task: todo,
@@ -58,7 +67,7 @@ const ToDoWrapper = () => {
     setEditingTaskId(null); 
   };
 
-  // const randomColor = getRandomColor();
+
 
   return (
     <div className="TodoWrapper">
