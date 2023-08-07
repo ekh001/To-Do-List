@@ -5,6 +5,7 @@ interface Task {
   id: string;
   task: string;
   completed: boolean;
+  color: string;
 }
 
 interface ToDoProps {
@@ -14,9 +15,15 @@ interface ToDoProps {
   editToDo: (id: string) => void; 
 }
 
+
 const ToDo: React.FC<ToDoProps> = ({ task, toggleComplete, deleteToDo, editToDo }) => {
+
+  const randomColor = task.color;
   return (
-    <div className='Todo'>
+    <div className='Todo'
+    style={{
+      backgroundColor: randomColor
+    }}>
       <p onClick={() => toggleComplete(task.id)} className={`${task.completed ? 'completed': ""}`}>
         {task.task}
       </p>

@@ -10,9 +10,19 @@ interface Task {
   id: string;
   task: string;
   completed: boolean;
+  color: string;
 }
 
 type TodoId = string;
+
+function getRandomColor() {
+  const letters = ["#6007f0", "#c107f0", "#f0072e", "#0dab05", "#053cab"];
+  let color =  "#";
+  for (let i = 0; i < 6; i++) {
+    return letters[Math.floor(Math.random() * letters.length)];
+  }
+  return color;
+}
 
 const ToDoWrapper = () => {
   const [todos, setTodos] = useState<Task[]>([]);
@@ -23,6 +33,7 @@ const ToDoWrapper = () => {
       id: uuidv4(),
       task: todo,
       completed: false,
+      color: getRandomColor(),
     }]);
   };
 
@@ -46,6 +57,8 @@ const ToDoWrapper = () => {
   const cancelEdit = () => {
     setEditingTaskId(null); 
   };
+
+  // const randomColor = getRandomColor();
 
   return (
     <div className="TodoWrapper">

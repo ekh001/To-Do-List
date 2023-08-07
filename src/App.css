@@ -85,7 +85,7 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #2467ca;
+  /* background: #2467ca; */
   color: #fff;
   padding: 0.75rem 1rem;
   border-radius: 5px;
