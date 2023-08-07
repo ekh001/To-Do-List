@@ -32,7 +32,7 @@ const ToDoWrapper = () => {
 
   const addTodo = (todo: string) => {
     if (todo.trim() === "") {
-      toast("This field can't be empty, so unless your task is truly to do nothing, I'd suggest trying again.", {
+      toast("This field can't be empty, so unless your task is truly to do nothing (lucky), I'd suggest trying again.", {
         position: toast.POSITION.TOP_CENTER,
         className: 'toast-message'
       });

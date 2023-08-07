@@ -9,16 +9,17 @@
 
 html, body {
   height: 100%;
+  background-image: url('../src/assets/gradientblue.png');
 }
 
 body {
-  background-image: url('../src/assets/gradientblue.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
 }
 
 .App {
@@ -37,10 +38,12 @@ h3 {
 
 .TodoWrapper {
   background: #090962;
-  padding: 2rem;
+  padding: 3rem;
   border-radius: 5px;
   border-color: #2467ca;
   box-shadow: 0 0 10px rgb(5, 5, 5);
+  max-height: 90vh;
+  overflow-y: scroll;
 }
 
 .TodoForm {
@@ -85,7 +88,6 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* background: #2467ca; */
   color: #fff;
   padding: 0.75rem 1rem;
   border-radius: 5px;
@@ -121,5 +123,31 @@ h3 {
   text-decoration: line-through;
 }
 
+/* For WebKit-based browsers (Chrome, Safari) */
+.TodoWrapper::-webkit-scrollbar {
+  width: 10px; 
+}
 
- 
+.TodoWrapper::-webkit-scrollbar-thumb {
+  background-color: #2a33baa2;
+  border-radius: 2px; 
+}
+
+.TodoWrapper::-webkit-scrollbar-thumb:hover {
+  background-color: #283cd2;
+}
+
+/* Firefox */
+.TodoWrapper {
+  scrollbar-width: thin;
+  scrollbar-color: #5863ff #090962;
+}
+
+.TodoWrapper::-moz-scrollbar-thumb {
+  background-color: #5863ff; 
+  border-radius: 6px; 
+}
+
+.TodoWrapper::-moz-scrollbar-thumb:hover {
+  background-color: #283cd2; 
+}
