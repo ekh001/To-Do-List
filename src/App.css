@@ -93,6 +93,11 @@ h3 {
   border-radius: 5px;
   margin-bottom: 1rem;
   cursor: pointer;
+  transition: box-shadow .3s ease;
+}
+
+.Todo:hover {
+  box-shadow:  0 0 10px rgb(154, 148, 179);
 }
 
 .fa-trash {
