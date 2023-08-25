@@ -18,9 +18,9 @@ interface Task {
 type TodoId = string;
 
 function getRandomColor() {
-  const letters = ["#6007f0", "#c107f0", "#f0072e", "#0dab05", "#053cab"];
+  const letters = ["#6007f0", "#6032a8", "#2d8f2b", "#c107f0", "#f0072e", "#0dab05", "#053cab", "#8f2b6a", "#324ea8", ];
   let color =  "#";
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 9; i++) {
     return letters[Math.floor(Math.random() * letters.length)];
   }
   return color;
@@ -32,7 +32,7 @@ const ToDoWrapper = () => {
 
   const addTodo = (todo: string) => {
     if (todo.trim() === "") {
-      toast("This field can't be empty, so unless your task is truly to do nothing (lucky), I'd suggest trying again.", {
+      toast("This field can't be empty, so unless your task is truly to do nothing, please try again.", {
         position: toast.POSITION.TOP_CENTER,
         className: 'toast-message'
       });
