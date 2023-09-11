@@ -4,6 +4,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 import ToDoForm from "./ToDoForm";
 import { v4 as uuidv4 } from 'uuid';
+import { DragDropContext, Droppable, Draggable, DropResult } from "react-beautiful-dnd";
+
 import ToDo from "./ToDo";
 import EditToDoForm from "./EditToDoForm";
 uuidv4();
@@ -67,6 +69,18 @@ const ToDoWrapper = () => {
     setEditingTaskId(null); 
   };
 
+  const onDragEnd = (result: DropResult) => {
+    console.log("Hello")
+    console.log("Drag result:", result);
+    if (!result.destination) return;
+
+    const updatedTodos = Array.from(todos);
+    const [reorderedTodo] = updatedTodos.splice(result.source.index, 1);
+    updatedTodos.splice(result.destination.index, 0, reorderedTodo);
+
+    setTodos(updatedTodos);
+  };
+
 
 
   return (
@@ -77,20 +91,66 @@ const ToDoWrapper = () => {
       <h3>
         What's on the agenda today?
       </h3>
+      
+
+      <DragDropContext onDragEnd={onDragEnd}>
+        
       <ToDoForm addTodo={addTodo} editToDo={editToDo} />
-      {todos.map((todo) => (
-        editingTaskId === todo.id ? (
-          <EditToDoForm key={todo.id} editTodo={editTask} task={todo} onCancel={cancelEdit} />
-        ) : (
-          <ToDo
-            task={todo}
-            key={todo.id}
-            toggleComplete={toggleComplete}
-            deleteToDo={deleteToDo}
-            editToDo={editToDo}
-          />
-        )
-      ))}
+
+        <Droppable droppableId="todos">
+
+          {(provided) => (
+            <ul
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+              className="todo-list"
+            >
+
+              {todos.map((todo, index) => (
+                <Draggable key={todo.id} draggableId={todo.id} index={index}>
+                  {(provided) => (
+                    <li
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                    >
+                      {editingTaskId === todo.id ? (
+                        <EditToDoForm
+                          key={todo.id}
+                          editTodo={editTask}
+                          task={todo}
+                          onCancel={cancelEdit}
+                        />
+
+                      ) : (
+
+                        <ToDo
+                          task={todo}
+                          key={todo.id}
+                          toggleComplete={toggleComplete}
+                          deleteToDo={deleteToDo}
+                          editToDo={editToDo}
+                        />
+                      )}
+
+                    </li>
+
+                  )}
+
+                </Draggable>
+
+              ))}
+
+              {provided.placeholder}
+
+            </ul>
+
+          )}
+
+        </Droppable>
+
+      </DragDropContext>
+
     </div>
   );
 };
