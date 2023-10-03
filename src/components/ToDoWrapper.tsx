@@ -20,9 +20,9 @@ interface Task {
 type TodoId = string;
 
 function getRandomColor() {
-  const letters = ["#6007f0", "#6032a8", "#2d8f2b", "#c107f0", "#f0072e", "#0dab05", "#053cab", "#8f2b6a", "#324ea8", ];
+  const letters = ["#6007f0", "#6032a8", "#2d8f2b", "#5585b5", "#c107f0", "#f70776", "#f0072e", "#0dab05", "#053cab", "#f95959", "#005792",  "#8f2b6a", "#324ea8", "#00bbf0", "#9896f1", "#d59bf6", "#8594e4", "#430f58" ];
   let color =  "#";
-  for (let i = 0; i < 9; i++) {
+  for (let i = 0; i < 18; i++) {
     return letters[Math.floor(Math.random() * letters.length)];
   }
   return color;
